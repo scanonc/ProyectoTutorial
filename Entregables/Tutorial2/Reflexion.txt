@@ -1,0 +1,1 @@
+El patron OrdenBuilder ayuda a evitar errores porque organiza la creacion y validacion de una orden en un solo lugar. Asi, la vista no tiene que manejar todos los datos y calculos directamente, haciendo que el codigo sea mas ordenado y reduciendo el riesgo de errores.
