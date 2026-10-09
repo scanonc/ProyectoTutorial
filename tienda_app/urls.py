@@ -8,6 +8,7 @@ urlpatterns = [
     # Usamos .as_view() para habilitar la CBV
     path('compra/<int:libro_id>/', CompraView.as_view(), name='finalizar_compra'),
     path('api/v1/comprar/', CompraAPIView.as_view(), name='api_comprar'),
+    path('inventario/', views.inventario_view, name='inventario'),
 
     path('compra-fbv/<int:libro_id>/', views.compra_rapida_fbv, name='compra_rapida_fbv'),
 

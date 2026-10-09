@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario</title>
+</head>
+<body>
+    <h1>Inventario de libros</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Libro</th>
+                <th>Precio</th>
+                <th>Inventario disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inventario in inventarios %}
+                <tr>
+                    <td>{{ inventario.libro.id }}</td>
+                    <td>{{ inventario.libro.titulo }}</td>
+                    <td>${{ inventario.libro.precio }}</td>
+                    <td>{{ inventario.cantidad }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No hay libros con inventario registrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

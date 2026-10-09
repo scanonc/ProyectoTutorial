@@ -2,10 +2,19 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import View
 
-from .models import Libro
+from .models import Inventario, Libro
 from .domain.logic import CalculadorImpuestos
 from .infra.factories import PaymentFactory
 from .services import CompraRapidaService, CompraService
+
+
+def inventario_view(request):
+    inventarios = Inventario.objects.select_related('libro').order_by('libro__id')
+    return render(
+        request,
+        'tienda_app/inventario.html',
+        {'inventarios': inventarios},
+    )
 
 
 def compra_rapida_fbv(request, libro_id):
