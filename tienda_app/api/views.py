@@ -1,11 +1,18 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 
 from tienda_app.infra.factories import PaymentFactory
+from tienda_app.models import Libro
 from tienda_app.services import CompraService
 
-from .serializers import OrdenInputSerializer
+from .serializers import LibroSerializer, OrdenInputSerializer
+
+
+class ProductosAPIView(ListAPIView):
+    queryset = Libro.objects.all().order_by('id')
+    serializer_class = LibroSerializer
 
 
 class CompraAPIView(APIView):

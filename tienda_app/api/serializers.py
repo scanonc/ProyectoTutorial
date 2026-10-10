@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from tienda_app.models import Libro
+from tienda_app.models import Inventario, Libro
 
 
 class LibroSerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class LibroSerializer(serializers.ModelSerializer):
         fields = ['id', 'titulo', 'precio', 'stock_actual']
 
     def get_stock_actual(self, obj):
-        inventario = getattr(obj, 'inventario', None)
+        inventario = Inventario.objects.filter(libro=obj).first()
         return inventario.cantidad if inventario else 0
 
 

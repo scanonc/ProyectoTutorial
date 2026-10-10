@@ -1,5 +1,5 @@
 from django.urls import path
-from .api.views import CompraAPIView
+from .api.views import CompraAPIView, ProductosAPIView
 from .views import CompraView
 
 from . import views
@@ -8,6 +8,7 @@ urlpatterns = [
     # Usamos .as_view() para habilitar la CBV
     path('compra/<int:libro_id>/', CompraView.as_view(), name='finalizar_compra'),
     path('api/v1/comprar/', CompraAPIView.as_view(), name='api_comprar'),
+    path('api/v1/productos/', ProductosAPIView.as_view(), name='api_productos'),
     path('inventario/', views.inventario_view, name='inventario'),
 
     path('compra-fbv/<int:libro_id>/', views.compra_rapida_fbv, name='compra_rapida_fbv'),
